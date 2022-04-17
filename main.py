@@ -1,6 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 import requests
 from bs4 import BeautifulSoup
+from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+
 
 def remove_dup(arr):
     res = []
@@ -23,7 +27,7 @@ def get_bflix(search):
     soup = BeautifulSoup(page.content, 'html.parser')
     for a in soup.find_all('a', href=True):
         links.append(a['href'])
-    return remove_dup(list(filter(lambda k: '/movie' in k or "/tv" in k, links)))
+    return remove_dup(list(filter(lambda k: '/movie' in k or "/tv" in k and not "/genre" and not "/tv-show", links)))
 
 def get_movrulz(search):
     links = []
@@ -37,17 +41,32 @@ def get_movrulz(search):
 
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
-@app.get("/")
-def root():
-    return {"data":"hello world"}
+@app.get("/", response_class=HTMLResponse)
+def root(request: Request):
+    # return {"data":"hello world"}
+    return templates.TemplateResponse("index.html", {"request": request})
 
-@app.get("/search/{search}")
-def root(search:str):
-    data = {
+@app.get("/search/{search}", response_class=HTMLResponse)
+def root(request: Request,search:str):
+    return templates.TemplateResponse("search.html", {
+        "request": request,
+        "search":search,
         "sflix":get_sflix(search),
         "bflix":get_bflix(search),
-        "movie rulz":get_movrulz(search)
+        "movierulz":get_movrulz(search)
+    })
+
+@app.get("/api/v1/{search}")
+def root(search:str):
+    return {
+        "data":{
+            "search":search,
+            "sflix":get_sflix(search),
+            "bflix":get_bflix(search),
+            "movierulz":get_movrulz(search)
+        }
     }
-    return {"data":data}
 

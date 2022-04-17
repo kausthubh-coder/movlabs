@@ -5,3 +5,5 @@ uvicorn
 requests
 
 bs4
+
+jinja2
