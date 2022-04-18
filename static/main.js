@@ -5,7 +5,7 @@ var app = new Vue({
     },
     methods:{
         search: function(){
-            let url = this.message.replace(/\s/g, '')
+            let url = this.message.replace(/\s/g, '-')
             window.location.replace("/search/"+url);
         }
     }
