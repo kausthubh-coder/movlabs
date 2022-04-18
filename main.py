@@ -18,7 +18,7 @@ def get_sflix(search):
     page = requests.get(f"https://sflix.to/search/{search}")
     soup = BeautifulSoup(page.content, 'html.parser')
     for a in soup.find_all('a', href=True):
-        links.append("sflix.to"+a['href'])
+        links.append("https://sflix.to"+a['href'])
     return remove_dup(list(filter(lambda k: '/movie/free' in k or "/tv/free" in k, links)))
 
 def get_bflix(search):
@@ -26,7 +26,7 @@ def get_bflix(search):
     page = requests.get(f"https://bflix.gg/search/{search}")
     soup = BeautifulSoup(page.content, 'html.parser')
     for a in soup.find_all('a', href=True):
-        links.append("bflix.gg"+a['href'])
+        links.append("https://bflix.gg"+a['href'])
     return remove_dup(list(filter(lambda k: '/movie' in k or "/tv" in k and not "/genre" and not "/tv-show", links)))
 
 def get_movrulz(search):
