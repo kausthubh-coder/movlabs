@@ -8,23 +8,35 @@
 </head>
 <body>
     <h1>search results for {{ search }}</h1>
-    <h2>sflix.to</h2>
+    <h2>sflix</h2>
     <ul>
         {% for i in sflix %}
-            <li>{{ i }}</li>
+            <li><a href={{ i }}>{{ i }}</a></li>
         {% endfor %}    
     </ul>
-    <h2>bflix.gg</h2>
+    <h2>bflix</h2>
     <ul>
         {% for i in bflix %}
-            <li>{{ i }}</li>
+            <li><a href={{ i }}>{{ i }}</a></li>
         {% endfor %}    
     </ul>
-    <h2>https://ww5.moviesrulzfree.com</h2>
+    <h2>moviesrulz</h2>
     <ul>
         {% for i in movierulz %}
-            <li>{{ i }}</li>
+            <li><a href={{ i }}>{{ i }}</a></li>
         {% endfor %}    
     </ul>
+    <style>
+        *{
+            background-color: #191D24;
+            color:rgb(89, 89, 89)
+        }
+        *>h1{
+            color: rgb(255, 255, 255);
+        }
+        *>h2{
+            color: rgb(202, 202, 202);
+        }
+    </style>
 </body>
 </html>

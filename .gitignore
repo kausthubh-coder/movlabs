@@ -5,6 +5,9 @@
 ### Python ###
 # Byte-compiled / optimized / DLL files
 /env
+/fastapideta
+
+/.deta
 
 __pycache__/
 *.py[cod]
