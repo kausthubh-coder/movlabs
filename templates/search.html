@@ -7,7 +7,9 @@
     <title>MovLabs</title>
 </head>
 <body>
-    <h1>search results for {{ search }}</h1>
+    {% if sflix or if bflix or movierulz %}
+        <h1>search results for {{ search }}</h1>
+    {% endif %}
     {% if sflix %}
         <h2>sflix</h2>
         <ul>
@@ -16,18 +18,25 @@
             {% endfor %}    
         </ul>
     {% endif %}
-    <h2>bflix</h2>
-    <ul>
-        {% for i in bflix %}
-            <li><a href={{ i }}>{{ i }}</a></li>
-        {% endfor %}    
-    </ul>
-    <h2>moviesrulz</h2>
-    <ul>
-        {% for i in movierulz %}
-            <li><a href={{ i }}>{{ i }}</a></li>
-        {% endfor %}    
-    </ul>
+    {% if bflix %}
+        <h2>bflix</h2>
+        <ul>
+            {% for i in bflix %}
+                <li><a href={{ i }}>{{ i }}</a></li>
+            {% endfor %}    
+        </ul>
+    {% endif %}
+    {% if movierulz %}
+        <h2>moviesrulz</h2>
+        <ul>
+            {% for i in movierulz %}
+                <li><a href={{ i }}>{{ i }}</a></li>
+            {% endfor %}    
+        </ul>
+    {% endif %}
+    {% if not bflix and not sflix and not movierulz %}
+        <h2>None Found with  {{ search }}</h2>
+    {% endif %}
     <button class="btn btn-primary"><a href="https://movlabs.herokuapp.com">Back</a></button>
     <footer class="footer footer-center p-4 bg-base-300 text-base-content">
         <div>
