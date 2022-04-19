@@ -16,6 +16,8 @@
                 {% if sflix or bflix or movierulz %}
                     <h1 class="text-5xl font-bold">search results for {{ search }}</h1>
                 {% endif %}
+                <br>
+                <br>
                 {% if sflix %}
                     <h2 class="text-4xl font-bold">sflix</h2>
                     <ul>
@@ -24,6 +26,7 @@
                         {% endfor %}    
                     </ul>
                 {% endif %}
+                <br>
                 {% if bflix %}
                     <h2 class="text-4xl font-bold">bflix</h2>
                     <ul>
@@ -32,6 +35,7 @@
                         {% endfor %}    
                     </ul>
                 {% endif %}
+                <br>
                 {% if movierulz %}
                     <h2 class="text-4xl font-bold">moviesrulz</h2>
                     <ul>
@@ -40,12 +44,16 @@
                         {% endfor %}    
                     </ul>
                 {% endif %}
+                <br>
                 {% if not bflix and not sflix and not movierulz %}
                     <h2>None Found with  {{ search }}</h2>
                 {% endif %}
+                <br>
                 <button class="btn btn-primary" v-on:click="home">Back</button>
             </div>
         </div>
+        <br>
+        <br>
     </div>    
     <footer class="footer footer-center p-4 bg-base-300 text-base-content">
         <div>
