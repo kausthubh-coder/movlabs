@@ -8,12 +8,14 @@
 </head>
 <body>
     <h1>search results for {{ search }}</h1>
-    <h2>sflix</h2>
-    <ul>
-        {% for i in sflix %}
-            <li><a href={{ i }}>{{ i }}</a></li>
-        {% endfor %}    
-    </ul>
+    {% if sflix %}
+        <h2>sflix</h2>
+        <ul>
+            {% for i in sflix %}
+                <li><a href={{ i }}>{{ i }}</a></li>
+            {% endfor %}    
+        </ul>
+    {% endif %}
     <h2>bflix</h2>
     <ul>
         {% for i in bflix %}
