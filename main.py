@@ -27,7 +27,7 @@ def get_bflix(search):
     soup = BeautifulSoup(page.content, 'html.parser')
     for a in soup.find_all('a', href=True):
         links.append("https://bflix.gg"+a['href'])
-    return remove_dup(list(filter(lambda k: '/movie' in k or "/tv" in k and not "/genre" and not "/tv-show", links)))
+    return remove_dup(list(filter(lambda k: '/movie/watch' in k or "/tv" in k and not "/genre" and not "/tv-show" and not "/t", links)))
 
 def get_movrulz(search):
     links = []
