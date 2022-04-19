@@ -9,37 +9,41 @@
     <title>{{ search }}-movlabs</title>
 </head>
 <body>
-    {% if sflix or bflix or movierulz %}
-        <h1>search results for {{ search }}</h1>
-    {% endif %}
-    {% if sflix %}
-        <h2>sflix</h2>
-        <ul>
-            {% for i in sflix %}
-                <li><a href={{ i }}>{{ i }}</a></li>
-            {% endfor %}    
-        </ul>
-    {% endif %}
-    {% if bflix %}
-        <h2>bflix</h2>
-        <ul>
-            {% for i in bflix %}
-                <li><a href={{ i }}>{{ i }}</a></li>
-            {% endfor %}    
-        </ul>
-    {% endif %}
-    {% if movierulz %}
-        <h2>moviesrulz</h2>
-        <ul>
-            {% for i in movierulz %}
-                <li><a href={{ i }}>{{ i }}</a></li>
-            {% endfor %}    
-        </ul>
-    {% endif %}
-    {% if not bflix and not sflix and not movierulz %}
-        <h2>None Found with  {{ search }}</h2>
-    {% endif %}
-    <button class="btn btn-primary"><a href="https://movlabs.herokuapp.com">Back</a></button>
+    <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content text-center">
+            {% if sflix or bflix or movierulz %}
+                <h1>search results for {{ search }}</h1>
+            {% endif %}
+            {% if sflix %}
+                <h2>sflix</h2>
+                <ul>
+                    {% for i in sflix %}
+                        <li><a href={{ i }}>{{ i }}</a></li>
+                    {% endfor %}    
+                </ul>
+            {% endif %}
+            {% if bflix %}
+                <h2>bflix</h2>
+                <ul>
+                    {% for i in bflix %}
+                        <li><a href={{ i }}>{{ i }}</a></li>
+                    {% endfor %}    
+                </ul>
+            {% endif %}
+            {% if movierulz %}
+                <h2>moviesrulz</h2>
+                <ul>
+                    {% for i in movierulz %}
+                        <li><a href={{ i }}>{{ i }}</a></li>
+                    {% endfor %}    
+                </ul>
+            {% endif %}
+            {% if not bflix and not sflix and not movierulz %}
+                <h2>None Found with  {{ search }}</h2>
+            {% endif %}
+            <button class="btn btn-primary">Back</button>
+        </div>
+    </div>    
     <footer class="footer footer-center p-4 bg-base-300 text-base-content">
         <div>
           <p>Copyright © 2022 - All right reserved by Kausthubh Nandimandalam</p>
