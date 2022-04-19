@@ -9,7 +9,7 @@ var app = new Vue({
             window.location.replace("/search/"+url);
         },
         home: function(){
-            window.location.href = "http://www.movlabs.herokuapp.com";
+            window.location.href = "http://movlabs.herokuapp.com";
         }
     }
   })
